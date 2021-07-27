@@ -30,12 +30,12 @@ Used:
 	* Syntax tree (used by compiler and calculators)
 	* Treap - a probabilistic DS (uses a radnomized BST)
 
-	Operation	| 		Avg		|	   Worst    |
-	----------------------------------------------------
-	Insert  	|	O(log(n))	|		O(n)	|
-	Delele		|   O(log(n))   |       O(n)    |
-	Remove      |   O(log(n))   |       O(n)    |
-	Search      |   O(log(n))   |       O(n)    |
+	Operation	| 	Avg		|	Worst   |
+	---------------------------------------------------------
+	Insert  	|	O(log(n))	|	O(n)	|
+	Delele		|	O(log(n))   	|       O(n)    |
+	Remove      	|   	O(log(n))	|       O(n)    |
+	Search      	|	O(log(n))   	|       O(n)    |
 */
 type BST struct {
 	nodeCount int
