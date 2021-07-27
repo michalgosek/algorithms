@@ -1,24 +1,25 @@
 package bst_test
 
 import (
+	"algorithms/ds/bst"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestBST_IsEmpty(t *testing.T) {
-	var b BST
+	var b bst.BST
 	assert.Equal(t, b.IsEmpty(), true)
 }
 func TestBST_Add(t *testing.T) {
-	var b BST
+	var b bst.BST
 	assert.Equal(t, b.Add("A"), true)
 	assert.Equal(t, b.Add("B"), true)
 	assert.Equal(t, b.Add("C"), true)
 }
 
 func TestBST_Remove(t *testing.T) {
-	var b BST
+	var b bst.BST
 	b.Add("A")
 	assert.Equal(t, b.Size(), 1)
 	assert.Equal(t, b.Remove("B"), false)
@@ -38,7 +39,7 @@ func TestBST_Remove(t *testing.T) {
 }
 
 func TestBST_Contains(t *testing.T) {
-	var b BST
+	var b bst.BST
 	b.Add("A")
 	b.Add("B")
 	b.Add("C")
@@ -48,7 +49,7 @@ func TestBST_Contains(t *testing.T) {
 }
 
 func TestBST_Height(t *testing.T) {
-	var b BST
+	var b bst.BST
 	// Tree should look like:
 	//        M
 	//      J  S
@@ -79,7 +80,7 @@ func TestBST_Height(t *testing.T) {
 }
 
 func TestBST_Size(t *testing.T) {
-	var b BST
+	var b bst.BST
 	assert.Equal(t, b.Size(), 0)
 
 	b.Add("A")
@@ -93,7 +94,7 @@ func ExampleBST_InOrder() {
 	//    B   N Z
 	//  A
 
-	var b BST
+	var b bst.BST
 	b.Add("M")
 	b.Add("J")
 	b.Add("S")
@@ -119,7 +120,7 @@ func ExampleBST_PreOrder() {
 	//    B   N Z
 	//  A
 
-	var b BST
+	var b bst.BST
 	b.Add("M")
 	b.Add("J")
 	b.Add("S")
@@ -136,4 +137,30 @@ func ExampleBST_PreOrder() {
 	// S
 	// N
 	// Z
+}
+
+func ExampleBST_LevelOrder() {
+	// Tree should look like:
+	//        M
+	//      J  S
+	//    B   N Z
+	//  A
+
+	var b bst.BST
+	b.Add("M")
+	b.Add("J")
+	b.Add("S")
+	b.Add("B")
+	b.Add("N")
+	b.Add("Z")
+	b.Add("A")
+	b.LevelOrder()
+	//Output:
+	// M
+	// J
+	// S
+	// B
+	// N
+	// Z
+	// A
 }

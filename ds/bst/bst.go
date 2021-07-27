@@ -171,3 +171,25 @@ func (b *BST) inOrder(node *Node) {
 	fmt.Println(node.value)
 	b.inOrder(node.right)
 }
+
+func (b *BST) LevelOrder() {
+	b.levelOrder(b.root)
+}
+
+func (b *BST) levelOrder(node *Node) {
+	var queue []*Node
+
+	queue = append(queue, node)
+	for len(queue) != 0 {
+		dequeue := queue[0]
+		queue = queue[1:]
+
+		fmt.Println(dequeue.value)
+		if dequeue.left != nil {
+			queue = append(queue, dequeue.left)
+		}
+		if dequeue.right != nil {
+			queue = append(queue, dequeue.right)
+		}
+	}
+}
