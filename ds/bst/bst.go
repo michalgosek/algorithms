@@ -11,32 +11,6 @@ type Node struct {
 	right *Node
 }
 
-/*
-BST is a tree is unidirected graph which staisfies any of
-following defiintions:
-	** An acylic connected graph
-	** A connected graph with N nodes and N-1 edges
-	** A graph in which any two vertices are connected
-  by exactly one path
-
-Used:
-	* Implementation of some map and set ADTs
-	* Red Black Trees
-	* AVL Trees
-	* Splay Trees
-	* etc...
-
-	* Used in the implementation of binary heaps
-	* Syntax tree (used by compiler and calculators)
-	* Treap - a probabilistic DS (uses a radnomized BST)
-
-	Operation	| 	Avg		|	Worst   |
-	---------------------------------------------------------
-	Insert  	|	O(log(n))	|	O(n)	|
-	Delele		|	O(log(n))   	|       O(n)    |
-	Remove      	|   	O(log(n))	|       O(n)    |
-	Search      	|	O(log(n))   	|       O(n)    |
-*/
 type BST struct {
 	nodeCount int
 	root      *Node
