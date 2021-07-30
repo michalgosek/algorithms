@@ -19,9 +19,14 @@ by exactly one path
 
 Space and Time complexity: 
 
-        Operation	| 	  AVG       |	Worst   |
-        ----------------------------------------
-        Insert  	|	O(log(n))   |	O(n)	|
-        Delele		|	O(log(n))   |   O(n)    |
-        Remove      |   O(log(n))	|   O(n)    |
-        Search      |	O(log(n))  	|   O(n)    |
+| Operation | AVG | Worst |
+| :---     |    :----:    |   ---: |
+| Insert   | O(log(n))    | O(n)   |
+| Delele   | O(log(n))    | O(n)   |
+| Remove   | O(log(n))    | O(n)   |
+| Search   | O(log(n))    | O(n)   |
+ 
+
+
+     
+ 
