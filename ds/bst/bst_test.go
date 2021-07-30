@@ -9,33 +9,88 @@ import (
 
 func TestBST_IsEmpty(t *testing.T) {
 	var b bst.BST
-	assert.Equal(t, b.IsEmpty(), true)
+	got := b.IsEmpty()
+	if got != true {
+		t.Errorf("expected to get empty tree; got %t", got)
+	}
 }
 func TestBST_Add(t *testing.T) {
 	var b bst.BST
-	assert.Equal(t, b.Add("A"), true)
-	assert.Equal(t, b.Add("B"), true)
-	assert.Equal(t, b.Add("C"), true)
+	nodes := []string{"A", "B", "C"}
+
+	for _, n := range nodes {
+		got := b.Add(n)
+		if got != true {
+			t.Errorf("expected to get true after adding node A")
+		}
+	}
 }
 
 func TestBST_Remove(t *testing.T) {
 	var b bst.BST
-	b.Add("A")
-	assert.Equal(t, b.Size(), 1)
-	assert.Equal(t, b.Remove("B"), false)
-	assert.Equal(t, b.Size(), 1)
+
+	addOp := b.Add("A")
+	if addOp != true {
+		t.Fatalf("expected to get true after adding root node A; got %t", addOp)
+	}
+
+	size := b.Size()
+	if size != 1 {
+		t.Errorf("expected to get size equals one, got %d", size)
+	}
+
+	// Removing element does not exist
+	removeOp := b.Remove("B")
+	if removeOp != false {
+		t.Errorf("expected to get false after removing non existing node B; got %t", removeOp)
+	}
+
+	size = b.Size()
+	if size != 1 {
+		t.Errorf("expected to get size equals one; got %d", size)
+	}
 
 	// Removing elements does exist
-	b.Add("B")
-	assert.Equal(t, b.Size(), 2)
-	assert.Equal(t, b.Remove("B"), true)
-	assert.Equal(t, b.Size(), 1)
-	assert.Equal(t, b.Height(), 1)
+	addOp = b.Add("B")
+	if addOp != true {
+		t.Errorf("expected to get true after adding node B; got %t", addOp)
+	}
+
+	size = b.Size()
+	if size != 2 {
+		t.Errorf("expected to get size equals two; got %d", size)
+	}
+
+	removeOp = b.Remove("B")
+	if removeOp != true {
+		t.Fatalf("expected to get true after removing existing node B; got %t", removeOp)
+	}
+
+	size = b.Size()
+	if size != 1 {
+		t.Errorf("expected to get size equals one after removing node B; got %d", size)
+	}
+
+	height := b.Height()
+	if size != 1 {
+		t.Errorf("expected to get height equals one after removing node B; got %d", size)
+	}
 
 	// Removing the root
-	assert.Equal(t, b.Remove("A"), true)
-	assert.Equal(t, b.Size(), 0)
-	assert.Equal(t, b.Height(), 0)
+	removeOp = b.Remove("A")
+	if removeOp != true {
+		t.Fatalf("expected to get true after root node A; got %t", removeOp)
+	}
+
+	size = b.Size()
+	if size != 0 {
+		t.Errorf("expected to get size equals zero; got %d", size)
+	}
+
+	height = b.Height()
+	if height != 0 {
+		t.Errorf("expected to get height equals zero; got %d", height)
+	}
 }
 
 func TestBST_Contains(t *testing.T) {
