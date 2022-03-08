@@ -50,6 +50,48 @@ func TestShouldAddLastElementToTheList(t *testing.T) {
 	}
 }
 
+func TestGetNodeValueAt(t *testing.T) {
+	var l lists.DoubleLinkedList
+	l.AddFirst(1)
+	l.AddFirst(2)
+	l.AddFirst(3)
+	l.AddLast(8)
+
+	got := l.ValueAt(0)
+	if got != 3 {
+		t.Fatalf("expected to get value equals 3; got %d", got)
+	}
+	got = l.ValueAt(1)
+	if got != 2 {
+		t.Fatalf("expected to get value equals 2; got %d", got)
+	}
+	got = l.ValueAt(2)
+	if got != 1 {
+		t.Fatalf("expected to get value equals 1; got %d", got)
+	}
+	got = l.ValueAt(3)
+	if got != 8 {
+		t.Fatalf("expected to get value equals 8; got %d", got)
+	}
+}
+
+func TestAddAtElementToTheList(t *testing.T) {
+	var l lists.DoubleLinkedList
+	l.AddAt(0, 1)
+	l.AddAt(1, 2)
+	l.AddAt(1, 3)
+	l.AddAt(2, 4)
+	l.AddAt(1, 8)
+
+	expectedValues := []int{1, 8, 3, 4, 2}
+	for i, v := range expectedValues {
+		got := l.ValueAt(i)
+		if got != v {
+			t.Fatalf("expected to get %d at %d index", v, i)
+		}
+	}
+}
+
 func TestShouldPanicAfterRemoveFirstWhenEmpty(t *testing.T) {
 	var l lists.DoubleLinkedList
 	assertPanic(t, l.RemoveFirst)

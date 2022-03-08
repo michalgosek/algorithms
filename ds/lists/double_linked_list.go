@@ -1,7 +1,7 @@
 package lists
 
 type node struct {
-	val         interface{}
+	val         int
 	left, right *node
 }
 
@@ -51,6 +51,28 @@ func (d *DoubleLinkedList) AddLast(v int) {
 	curr.right = node
 	node.left = curr
 	d.length++
+}
+
+func (d *DoubleLinkedList) AddAt(idx, v int) {
+
+}
+
+func (d *DoubleLinkedList) ValueAt(idx int) int {
+	if d.root == nil {
+		panic("empty double linked list")
+	}
+	if idx < 0 {
+		return -1
+	}
+	if idx == 0 {
+		return d.root.val
+	}
+
+	curr := d.root
+	for i := 1; i <= idx; i++ {
+		curr = curr.right
+	}
+	return curr.val
 }
 
 func (d *DoubleLinkedList) Size() int {
