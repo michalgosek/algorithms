@@ -83,6 +83,11 @@ func TestAddAtElementToTheList(t *testing.T) {
 	l.AddAt(2, 4)
 	l.AddAt(1, 8)
 
+	got := l.Size()
+	if got != 5 {
+		t.Fatalf("expected to get length equals 5; got %d", got)
+	}
+
 	expectedValues := []int{1, 8, 3, 4, 2}
 	for i, v := range expectedValues {
 		got := l.ValueAt(i)
@@ -95,6 +100,15 @@ func TestAddAtElementToTheList(t *testing.T) {
 func TestShouldPanicAfterRemoveFirstWhenEmpty(t *testing.T) {
 	var l lists.DoubleLinkedList
 	assertPanic(t, l.RemoveFirst)
+}
+
+func TestShouldPanicAfterAddingAtNegativeIndex(t *testing.T) {
+	var l lists.DoubleLinkedList
+	defer func() {
+		recover()
+	}()
+	l.AddAt(-1, 0)
+	t.Fatal("expected to panic after calling func with negative idx")
 }
 
 func assertPanic(t *testing.T, f func()) {

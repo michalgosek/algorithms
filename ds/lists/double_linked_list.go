@@ -54,7 +54,34 @@ func (d *DoubleLinkedList) AddLast(v int) {
 }
 
 func (d *DoubleLinkedList) AddAt(idx, v int) {
+	if idx < 0 {
+		panic("neagative index val")
+	}
+	if d.root == nil || idx == 0 {
+		d.AddFirst(v)
+		return
+	}
+	if idx == d.length {
+		d.AddLast(v)
+		return
+	}
 
+	node := node{
+		left:  nil,
+		right: nil,
+		val:   v,
+	}
+
+	curr := d.root
+	for i := 1; i <= idx; i++ {
+		curr = curr.right
+	}
+
+	node.right = curr
+	node.left = curr.left
+	curr.left.right = &node
+	curr.left = &node
+	d.length++
 }
 
 func (d *DoubleLinkedList) ValueAt(idx int) int {
